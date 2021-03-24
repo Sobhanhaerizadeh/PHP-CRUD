@@ -1,3 +1,27 @@
+<?php
+    require_once("dbconfig.php");
+    if (isset($_POST["btnForm"])){
+        $name = $_POST["contact_name"];
+        $email = $_POST["contact_email"];
+        $subject = $_POST["contact_subject"];
+        $message = $_POST["contact_message"];
+            $sql = "INSERT INTO contact (`name` , `email`, `subject` , `message`) VALUES(:name, :email, :subject, :message)";
+            $query = $connect->prepare($sql);
+            $query->bindParam(":name" , $name , PDO::PARAM_STR);
+            $query->bindParam(":email" , $email , PDO::PARAM_STR);
+            $query->bindParam(":subject" , $subject, PDO::PARAM_STR);
+            $query->bindParam(":message" , $message , PDO::PARAM_STR);
+            $query->execute();
+            $checkLastId = $connect->lastInsertId();
+            if ($checkLastId) {
+                echo "<script> alert('Your message has been successfully sent'); </script>";
+                echo "<script> window.location.href = 'messages.php' </script>";
+    }
+            else
+            echo "<script> alert('ERROR => Your message has not been sent'); </script>";
+            
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -172,7 +196,7 @@ http://www.templatemo.com/tm-480-story
                                 <div class="content-text">
                                     <p>In felis turpis, tincidunt a odio interdum, ornare interdum magna. Proin leo tortor, adipiscing et volutpat tincidunt, imperdiet sit amet purus.
                                     </p>
-                                    <form action="index.html" method="post" class="contact-form">
+                                    <form  method="post" class="contact-form">
 
                                         <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 form-group-2-col-left">
                                             <input type="text" id="contact_name" name="contact_name" class="form-control" placeholder="Name" required/>
@@ -186,7 +210,7 @@ http://www.templatemo.com/tm-480-story
                                         <div class="form-group">
                                             <textarea id="contact_message" name="contact_message" class="form-control" rows="4" placeholder="Message" required></textarea>
                                         </div>
-                                        <button type="submit" class="btn btn-primary submit-btn">Send</button>
+                                        <button type="submit" class="btn btn-primary submit-btn" name="btnForm">Send</button>
 
                                     </form>                           
                                 </div>            
