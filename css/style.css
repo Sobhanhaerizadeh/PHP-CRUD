@@ -1,0 +1,8 @@
+img {
+    cursor: pointer;
+    transition: all 2s;
+}
+
+img:hover {
+    transform: rotate(360deg);
+}

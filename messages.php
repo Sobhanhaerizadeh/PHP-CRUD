@@ -11,7 +11,7 @@
     <title>Messages</title>
     <!-- <link rel="stylesheet" href="css/bootstrap.min.css">  -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
     <table class="table table-dark table-hover table-bordered">
@@ -22,6 +22,9 @@
                 <th scope="col">Email</th>
                 <th scope="col">Subject</th>
                 <th scope="col">Message</th>
+                <th scope="col">Registration Date</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
             </tr>
         </thead>
         <?php
@@ -34,8 +37,7 @@
                 foreach($results as $result){
                     ++$id;
                 ?>
-            
-
+        
 
         
         <tr>
@@ -44,6 +46,13 @@
             <td><?php echo htmlentities($result->email) ?></td>
             <td><?php echo htmlentities($result->subject) ?></td>
             <td><?php echo htmlentities($result->message) ?></td>
+            <td><?php echo htmlentities($result->created_at) ?></td>
+            <td class="table-success">
+                <a href="update.php?id=<?php echo htmlentities($result->id); ?> ">
+                  <img style="margin-left:1vw; "src="https://img.icons8.com/ios/35/000000/approve-and-update.png"/>
+                </a>
+            </td>
+            <td class="table-danger"><img style="margin-left:1vw;  " src="https://img.icons8.com/windows/35/000000/--cancel-delete.png"/></td>
         </tr>
         <?php
                 }

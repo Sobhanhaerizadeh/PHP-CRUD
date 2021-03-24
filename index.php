@@ -211,7 +211,7 @@ http://www.templatemo.com/tm-480-story
                                             <textarea id="contact_message" name="contact_message" class="form-control" rows="4" placeholder="Message" required></textarea>
                                         </div>
                                         <button type="submit" class="btn btn-primary submit-btn" name="btnForm">Send</button>
-
+                                        <input type="reset" class="btn btn-info submit-btn" value="reset"/>
                                     </form>                           
                                 </div>            
 
