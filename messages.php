@@ -1,5 +1,16 @@
 <?php
     require_once("dbconfig.php");
+    
+    if (isset($_REQUEST['id'])) {
+        $id = intval($_GET['id']);
+        $sql = "DELETE FROM contact WHERE `id` =:id" ;
+        $query = $connect->prepare($sql);
+        $query->bindParam(":id" , $id , PDO::PARAM_STR);
+        $query->execute();
+        echo "<script> alert('You have deleted this record!') </script>";
+        echo "<script> window.location.href = 'messages.php' </script>";
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +63,11 @@
                   <img style="margin-left:1vw; "src="https://img.icons8.com/ios/35/000000/approve-and-update.png"/>
                 </a>
             </td>
-            <td class="table-danger"><img style="margin-left:1vw;  " src="https://img.icons8.com/windows/35/000000/--cancel-delete.png"/></td>
+            <td class="table-danger">
+            <a href="messages.php?id=<?php echo htmlentities($result->id) ?> ">
+            <img style="margin-left:1vw;  " src="https://img.icons8.com/windows/35/000000/--cancel-delete.png" ONCLICK="return confirm('Are you sure to delete this record?')"/>
+            </a>
+            </td>
         </tr>
         <?php
                 }
