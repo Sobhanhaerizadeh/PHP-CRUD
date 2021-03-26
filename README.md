@@ -1,8 +1,5 @@
 
-![Uploading records.gif…]()
-
-
-
+![records](https://user-images.githubusercontent.com/30029609/112637345-aec13d80-8e5b-11eb-927a-34e1260bfb93.gif)
 
 
 # CRUD-Project
