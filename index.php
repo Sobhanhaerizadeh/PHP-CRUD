@@ -1,5 +1,6 @@
 <?php
-    require_once("dbconfig.php");
+    require_once("dbconfig.php"); 
+    // Create a Record !
     if (isset($_POST["btnForm"])){
         $name = $_POST["contact_name"];
         $email = $_POST["contact_email"];

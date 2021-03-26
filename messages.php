@@ -1,6 +1,6 @@
 <?php
     require_once("dbconfig.php");
-    
+    // Delete a Record !
     if (isset($_REQUEST['id'])) {
         $id = intval($_GET['id']);
         $sql = "DELETE FROM contact WHERE `id` =:id" ;
@@ -39,6 +39,7 @@
             </tr>
         </thead>
         <?php
+        // Read records! from table (contact)
             $sql = "SELECT `id` , `name` , `email` , `subject` , `message` , `created_at`FROM contact WHERE `id` >= 0";
             $query = $connect->prepare($sql);
             $query->execute();

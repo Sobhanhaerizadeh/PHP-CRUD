@@ -14,6 +14,7 @@
 </head>
 <body>  
     <?php
+    // Update a Record !
         $id = $_REQUEST["id"];
         $sql = "SELECT `name` , `email` , `subject` , `message` FROM contact WHERE `id`=:id";
         $query = $connect->prepare($sql);
